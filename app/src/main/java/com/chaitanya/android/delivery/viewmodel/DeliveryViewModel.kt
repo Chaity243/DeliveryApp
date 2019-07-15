@@ -28,9 +28,10 @@ class DeliveryViewModel @Inject constructor(
 
     init {
         val config = PagedList.Config.Builder()
+            .setPrefetchDistance(0)
             .setPageSize(BuildConfig.PAGE_SIZE)
             .setInitialLoadSizeHint(BuildConfig.PAGE_SIZE)
-            .setEnablePlaceholders(false)
+            .setEnablePlaceholders(true)
             .build()
 
         deliveryBoundaryCallback =

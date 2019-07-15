@@ -3,6 +3,7 @@ package com.chaitanya.android.delivery.view.delivery
 import android.app.AlertDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.arch.paging.PagedList
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -15,17 +16,17 @@ import com.chaitanya.android.delivery.R
 import com.chaitanya.android.delivery.databinding.ActivityDeliveryBinding
 import com.chaitanya.android.delivery.model.repository.databse.entity.Delivery
 import com.chaitanya.android.delivery.view.BaseActivity
-import com.chaitanya.android.delivery.viewmodel.ViewModelFactory
 import com.chaitanya.android.delivery.view.delivery.adapter.DeliveryListAdapter
 import com.chaitanya.android.delivery.view.map.MapActivity
 import com.chaitanya.android.delivery.viewmodel.DeliveryViewModel
+import com.chaitanya.android.delivery.viewmodel.ViewModelFactory
 import javax.inject.Inject
 import javax.inject.Named
 
 
 class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
     override fun getActivityViewModel(): DeliveryViewModel {
-      return  ViewModelProviders.of(this, viewModelFactory).get(DeliveryViewModel::class.java)
+        return  ViewModelProviders.of(this, viewModelFactory).get(DeliveryViewModel::class.java)
     }
 
     @Inject
@@ -59,7 +60,9 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
 
     private fun observe() {
         viewModel?.deliveryList?.observe(this, Observer {
-            adapter.submitList(it)
+
+            var deliveryList :  PagedList<Delivery> = it!!
+            adapter.submitList(deliveryList)
             adapter.notifyDataSetChanged();
 
         })

@@ -62,7 +62,10 @@ class DeliveryListAdapter :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) != VIEW_TYPE_LOADING) {
-            (holder as DeliveryItemHolder).bind(getItem(position) as Delivery)
+            if( getItem(position)!=null)
+            {
+                (holder as DeliveryItemHolder).bind(getItem(position) as Delivery)
+            }
         } else {
             (holder as ProgressViewHolder).bind(isLoading.get(), isLoadMore.get())
         }
