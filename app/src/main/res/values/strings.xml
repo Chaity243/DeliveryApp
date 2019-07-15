@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Delivery Info</string>
+
+    <string name="error">Error fetching deliveries, please try again by swiping down </string>
+    <string name="network_error">No internet connection, please check and try again by swiping down </string>
+    <string name="load_more">Load More</string>
+    <string name="label_delivery">%s at %s</string>
+    <string name="no_more_data">No more data to fetch</string>
+    <string name="iv_content_desc">Delivery Item image</string>
+</resources>
