@@ -88,7 +88,7 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
                 viewModel?.tvError?.value= it?.let { it -> getString(it) }
             }
 
-            else it?.let { it1 -> showAlert(it1) }
+            else it?.let { it1 -> showAlert(it1).show() }
             viewModel?.isLoading?.value =false
             adapter.setLoading(false, adapter.itemCount != 0)
             adapter.notifyItemChanged(adapter.itemCount - 1)
