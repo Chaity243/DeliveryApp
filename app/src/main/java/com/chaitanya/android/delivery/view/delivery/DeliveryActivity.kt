@@ -8,6 +8,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.LinearLayout
 import com.chaitanya.android.delivery.BuildConfig.BUNDLE_KEY_DELIVERY
 import com.chaitanya.android.delivery.R
@@ -44,7 +45,7 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
         adapter.onItemClickListener = { onDeliveryItemClicked(it) }
         adapter.onLoadMoreClickListener = { viewModel?.retry() }
         binding.recyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+            LinearLayoutManager(this, LinearLayout.VERTICAL, false) as RecyclerView.LayoutManager?
         binding.recyclerView.adapter = adapter
         binding.recyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -59,6 +60,7 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
     private fun observe() {
         viewModel?.deliveryList?.observe(this, Observer {
             adapter.submitList(it)
+            adapter.notifyDataSetChanged();
 
         })
 
@@ -88,7 +90,9 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
                 viewModel?.tvError?.value= it?.let { it -> getString(it) }
             }
 
-            else it?.let { it1 -> showAlert(it1).show() }
+            else it?.let {
+                    it1 -> showAlert(it1).show() }
+
             viewModel?.isLoading?.value =false
             adapter.setLoading(false, adapter.itemCount != 0)
             adapter.notifyItemChanged(adapter.itemCount - 1)
