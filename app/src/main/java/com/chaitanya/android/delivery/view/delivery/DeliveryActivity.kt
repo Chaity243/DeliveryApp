@@ -20,6 +20,7 @@ import com.chaitanya.android.delivery.view.delivery.adapter.DeliveryListAdapter
 import com.chaitanya.android.delivery.view.map.MapActivity
 import com.chaitanya.android.delivery.viewmodel.DeliveryViewModel
 import com.chaitanya.android.delivery.viewmodel.ViewModelFactory
+import kotlinx.android.synthetic.main.activity_delivery.*
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -60,10 +61,9 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
 
     private fun observe() {
         viewModel?.deliveryList?.observe(this, Observer {
-
-            var deliveryList :  PagedList<Delivery> = it!!
-            adapter.submitList(deliveryList)
-            adapter.notifyDataSetChanged();
+            adapter.submitList(it)
+            recyclerView.recycledViewPool.clear();
+            adapter.notifyDataSetChanged()
 
         })
 

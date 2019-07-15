@@ -1,7 +1,5 @@
 package com.chaitanya.android.delivery.dagger.module
 
-
-import com.chaitanya.android.delivery.model.mapper.DeliveryMapper
 import com.chaitanya.android.delivery.pagination.DeliveryDataSource
 import com.chaitanya.android.delivery.model.repository.DeliveryRepository
 import com.chaitanya.android.delivery.model.repository.IDeliveryRepository
@@ -17,9 +15,8 @@ class RepositoryModule {
     @Singleton
     fun provideDeliveryRepository(
         deliveryAPI: DeliveryAPI,
-        deliveryMapper: DeliveryMapper,
         deliveryDataSource: DeliveryDataSource
     ): IDeliveryRepository {
-        return DeliveryRepository(deliveryAPI, deliveryMapper, deliveryDataSource)
+        return DeliveryRepository(deliveryAPI,deliveryDataSource)
     }
 }

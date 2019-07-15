@@ -1,6 +1,5 @@
 package com.chaitanya.android.delivery.model.repository
 
-import com.chaitanya.android.delivery.model.mapper.DeliveryMapper
 import com.chaitanya.android.delivery.model.repository.databse.entity.Delivery
 import com.chaitanya.android.delivery.model.repository.network.DeliveryAPI
 import com.chaitanya.android.delivery.pagination.DeliveryDataSource
@@ -13,7 +12,6 @@ import io.reactivex.Single
  */
 class DeliveryRepository(
     private val  deliveryAPI: DeliveryAPI,
-    private val deliveryMapper: DeliveryMapper,
     private val deliveryDataSource: DeliveryDataSource
 ) : IDeliveryRepository {
 
@@ -21,7 +19,7 @@ class DeliveryRepository(
         return deliveryAPI.getDeliveryList(offset, limit)
             .map {
 
-                val list: List<Delivery> = deliveryMapper.map(it)
+                val list: List<Delivery> =it
                 if (offset == 0) {
                     deliveryDataSource.clearAll()
                 }

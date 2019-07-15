@@ -1,6 +1,6 @@
 package com.chaitanya.android.delivery.model.repository.network
 
-import com.chaitanya.android.delivery.model.repository.network.response.DeliveryItemResponse
+import com.chaitanya.android.delivery.model.repository.databse.entity.Delivery
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -29,6 +29,6 @@ interface DeliveryAPI {
      * Get delivery list
      */
     @GET("deliveries/")
-    fun getDeliveryList(@Query("offset") offset: Int, @Query("limit") limit: Int): Single<List<DeliveryItemResponse>>
+    fun getDeliveryList(@Query("offset") offset: Int, @Query("limit") limit: Int): Single<List<Delivery>>
 
 }
