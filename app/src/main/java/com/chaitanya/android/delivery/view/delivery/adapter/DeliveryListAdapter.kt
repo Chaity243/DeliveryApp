@@ -76,6 +76,11 @@ class DeliveryListAdapter :
         isLoadMore.set(loadMore)
     }
 
+    fun getDeliveryItem(position: Int): Delivery? {
+        return super.getItem(position)
+    }
+
+
     companion object {
         val DELIVERY_COMPARATOR = object : DiffUtil.ItemCallback<Delivery>() {
             override fun areItemsTheSame(oldItem: Delivery, newItem: Delivery): Boolean {

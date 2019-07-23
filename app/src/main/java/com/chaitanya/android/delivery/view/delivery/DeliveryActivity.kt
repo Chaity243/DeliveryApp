@@ -21,6 +21,7 @@ import com.chaitanya.android.delivery.view.map.MapActivity
 import com.chaitanya.android.delivery.viewmodel.DeliveryViewModel
 import com.chaitanya.android.delivery.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_delivery.*
+import org.jetbrains.annotations.TestOnly
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -34,7 +35,7 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
     @Named("DeliveryActivity")
     lateinit var viewModelFactory: ViewModelFactory
 
-    private lateinit var adapter: DeliveryListAdapter
+    lateinit var adapter: DeliveryListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +63,7 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
     private fun observe() {
         viewModel?.deliveryList?.observe(this, Observer {
             adapter.submitList(it)
-            recyclerView.recycledViewPool.clear();
+            recyclerView.recycledViewPool.clear()
             adapter.notifyDataSetChanged()
 
         })
@@ -109,16 +110,22 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
         })
     }
 
-    private fun onDeliveryItemClicked(delivery: Delivery) {
+    fun onDeliveryItemClicked(delivery: Delivery) {
 
         val intent = Intent(this, MapActivity::class.java).putExtra(BUNDLE_KEY_DELIVERY, delivery.id)
         startActivity(intent)
     }
 
-    private fun showAlert(alertMessage: Int): AlertDialog = AlertDialog.Builder(this)
+    fun showAlert(alertMessage: Int): AlertDialog = AlertDialog.Builder(this)
         .setMessage(getString(alertMessage))
         .setNeutralButton(getString(android.R.string.ok)) { dialog, _ -> dialog.dismiss() }
         .create()
 
+
+    @TestOnly
+    fun setTestViewModel(viewModel: DeliveryViewModel) {
+        this.viewModel = viewModel
+        observe()
+    }
 
 }

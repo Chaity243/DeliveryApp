@@ -16,7 +16,9 @@ android {
         multiDexEnabled true
      //  testInstrumentationRunner "com.chaitanya.android.delivery.MyRunner"
         testInstrumentationRunner
-        "android.support.test.runner.AndroidJUnitRunner"
+        "com.chaitanya.android.delivery.MyRunner"
+
+
 
         resValue "string", "google_maps_key", (project.findProperty("GOOGLE_MAPS_API_KEY") ?: "")
         buildConfigField "String", "BASE_URL", (project.findProperty("BASE_URL") ?: "")
@@ -24,6 +26,7 @@ android {
         buildConfigField "String", "DATABASE_NAME", (project.findProperty("DATABASE_NAME") ?: "")
         buildConfigField "Integer", "PAGE_SIZE", (project.findProperty("PAGE_SIZE") ?: "")
         buildConfigField "String", "BUNDLE_KEY_DELIVERY", (project.findProperty("BUNDLE_KEY_DELIVERY") ?: "")
+        testInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
         release {
@@ -35,6 +38,14 @@ android {
 
     dataBinding {
         enabled true
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 
 }
@@ -100,7 +111,21 @@ dependencies {
     //testing
     testImplementation 'junit:junit:4.12'
     testImplementation "android.arch.core:core-testing:1.1.1"
+
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation "com.android.support.test:rules:1.0.2"
+
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espresso_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espresso_version"
+    androidTestImplementation "com.android.support.test.espresso.idling:idling-concurrent:$espresso_version"
+    implementation "com.android.support.test.espresso:espresso-idling-resource:$espresso_version"
+
+    implementation 'com.squareup.okhttp:mockwebserver:2.0.0'
+
+    testImplementation "org.robolectric:robolectric:4.3"
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
+    testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+
 
 }

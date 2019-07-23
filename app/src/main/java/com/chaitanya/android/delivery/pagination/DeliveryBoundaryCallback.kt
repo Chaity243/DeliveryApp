@@ -21,8 +21,8 @@ class DeliveryBoundaryCallback(
 ) :
     PagedList.BoundaryCallback<Delivery>() {
 
-    private var totalCount: Int = 0
-    private var isLoaded: Boolean = false
+    var totalCount: Int = 0
+    var isLoaded: Boolean = false
     var error = MutableLiveData<Int>()
     var loading = MutableLiveData<Boolean>()
     var success = MutableLiveData<Boolean>()
@@ -64,7 +64,7 @@ class DeliveryBoundaryCallback(
         }
     }
 
-    private fun fetchNetwork(offset: Int, limit: Int) {
+    fun fetchNetwork(offset: Int, limit: Int) {
         disposable.add(
             deliveryRepository.getDeliveries(offset, limit)
                 .toObservable()
@@ -85,7 +85,7 @@ class DeliveryBoundaryCallback(
         )
     }
 
-    private fun success(list: List<Delivery>) {
+    fun success(list: List<Delivery>) {
         totalCount += list.size
         if (list.size < BuildConfig.PAGE_SIZE) {
             isLoaded = true
@@ -96,7 +96,7 @@ class DeliveryBoundaryCallback(
     }
 
 
-    private fun error(throwable: Throwable) {
+    fun error(throwable: Throwable) {
         if (throwable is ConnectException) {
             updateErrorState(AlertMessage.NETWORK_ERROR.message)
         } else {

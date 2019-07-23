@@ -18,7 +18,7 @@ class DeliveryViewModel @Inject constructor(
     private var deliveryRepository: IDeliveryRepository
 ) : ViewModel() {
 
-    private val disposables = CompositeDisposable()
+    val disposables = CompositeDisposable()
     val isLoading =MutableLiveData<Boolean>()
     val tvErrorVisibility = MutableLiveData<Boolean>()
     val tvError = MutableLiveData<String>()

@@ -17,13 +17,8 @@ class ViewModelFactory @Inject constructor(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return if (modelClass.isAssignableFrom(DeliveryViewModel::class.java)) {
-            DeliveryViewModel(deliveryRepository) as T
-
-        }
-        else {
-            throw IllegalArgumentException("ViewModel Not Found") as Throwable
-        }
+        return if (modelClass.isAssignableFrom(DeliveryViewModel::class.java)) { DeliveryViewModel(deliveryRepository) as T }
+        else { throw IllegalArgumentException("ViewModel Not Found") as Throwable }
     }
 
 }
