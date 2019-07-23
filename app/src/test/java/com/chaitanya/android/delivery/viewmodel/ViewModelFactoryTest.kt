@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModel
 import com.chaitanya.android.delivery.model.repository.IDeliveryRepository
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -74,7 +74,7 @@ class DeliveryBoundaryCallbackTest{
 
         Mockito.`when`(mockDeliveryList.size).thenReturn(10)
         spy.success(mockDeliveryList)
-        assert(spy.isLoaded ==true)
+        assert(spy.isLoaded)
 
     }
 

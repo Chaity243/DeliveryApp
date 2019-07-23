@@ -1,16 +1,13 @@
 package com.chaitanya.android.delivery.view.delivery
 
-import android.arch.paging.PagedList
 import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.swipeDown
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.intent.Intents
 import android.support.test.espresso.matcher.ViewMatchers.*
-import android.support.test.runner.AndroidJUnit4
-import org.junit.Test
-import org.junit.runner.RunWith
 import android.support.test.rule.ActivityTestRule
+import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.AppCompatTextView
 import android.support.v7.widget.Toolbar
 import com.chaitanya.android.delivery.R
@@ -20,12 +17,11 @@ import com.chaitanya.android.delivery.view.delivery.CustomRecycerViewMatcher.Com
 import com.chaitanya.android.delivery.view.delivery.adapter.DeliveryListAdapter
 import com.chaitanya.android.delivery.view.util.MockServer
 import com.squareup.okhttp.mockwebserver.MockWebServer
-import okhttp3.internal.Util
 import org.hamcrest.Matchers.allOf
 import org.junit.Before
 import org.junit.Rule
-
-
+import org.junit.Test
+import org.junit.runner.RunWith
 
 
 @RunWith(AndroidJUnit4::class)
@@ -64,7 +60,7 @@ class DeliveryActivityUITest {
 
     @Rule
     @JvmField
-    var activityActivityTestRule = ActivityTestRule<DeliveryActivity>(DeliveryActivity::class.java)
+    var activityActivityTestRule = ActivityTestRule(DeliveryActivity::class.java)
 
     @Test
     fun swipeRefreshLayoutTest_shouldShowSwiping()

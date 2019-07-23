@@ -1,4 +1,4 @@
-package com.chaitanya.android.delivery.deliveryViewModel
+package com.chaitanya.android.delivery.viewmodel
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.LiveData
@@ -12,9 +12,7 @@ import com.chaitanya.android.delivery.model.repository.databse.entity.Location
 import com.chaitanya.android.delivery.pagination.DeliveryBoundaryCallback
 import com.chaitanya.android.delivery.util.AlertMessage
 import com.chaitanya.android.delivery.util.RxJavaTestHooksResetRule
-import com.chaitanya.android.delivery.viewmodel.DeliveryViewModel
 import com.nhaarman.mockito_kotlin.*
-import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import org.junit.*
@@ -24,7 +22,6 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 import java.net.ConnectException
-import java.net.UnknownHostException
 
 
 @RunWith(MockitoJUnitRunner::class)
