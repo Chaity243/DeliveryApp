@@ -6,7 +6,7 @@ import com.chaitanya.android.delivery.model.repository.databse.entity.Delivery
 
 
 class DeliveryItemHolder(
-    val binding: DeliveryViewItemBinding,
+    private val binding: DeliveryViewItemBinding,
     private val onItemClickListener: ((item: Delivery) -> Unit)?
 ) :
     RecyclerView.ViewHolder(binding.root) {

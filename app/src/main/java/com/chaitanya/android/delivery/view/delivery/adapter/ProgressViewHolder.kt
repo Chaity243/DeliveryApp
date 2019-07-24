@@ -5,7 +5,7 @@ import com.chaitanya.android.delivery.databinding.ItemProgressbarBinding
 import kotlinx.android.synthetic.main.item_progressbar.view.*
 
 class ProgressViewHolder(
-    val binding: ItemProgressbarBinding,
+    private val binding: ItemProgressbarBinding,
     private val onLoadMoreClickListener: (() -> Unit)?
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(isLoading: Boolean, isLoadingMore: Boolean) {

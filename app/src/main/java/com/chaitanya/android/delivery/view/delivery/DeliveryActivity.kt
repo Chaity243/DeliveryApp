@@ -111,7 +111,7 @@ class DeliveryActivity : BaseActivity<DeliveryViewModel>() {
         })
     }
 
-    fun onDeliveryItemClicked(delivery: Delivery) {
+    private fun onDeliveryItemClicked(delivery: Delivery) {
 
         val intent = Intent(this, MapActivity::class.java).putExtra(BUNDLE_KEY_DELIVERY, delivery.id)
         startActivity(intent)

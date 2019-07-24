@@ -7,7 +7,7 @@ object MockServer {
 
     fun response(jsonPath :String) :MockResponse = MockResponse().setResponseCode(200).setBody(getJSON(jsonPath))
 
-    fun getJSON(jsonPath: String):String
+    private fun getJSON(jsonPath: String):String
     {
 
         val context = InstrumentationRegistry.getInstrumentation().context

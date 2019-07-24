@@ -31,8 +31,8 @@ class DeliveryBoundaryCallbackTest{
     @Mock
     lateinit var deliveryRepository: IDeliveryRepository
 
-    lateinit var deliveryBoundaryCallback: DeliveryBoundaryCallback
-    lateinit var  spy:DeliveryBoundaryCallback
+    private lateinit var deliveryBoundaryCallback: DeliveryBoundaryCallback
+    private lateinit var  spy:DeliveryBoundaryCallback
 
     @Spy
     var mockDeliveryList = listOf<Delivery>()

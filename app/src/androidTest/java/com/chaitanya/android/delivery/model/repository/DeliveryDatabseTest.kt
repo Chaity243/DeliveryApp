@@ -30,7 +30,7 @@ class DeliveryDatabseTest {
             DeliveryDatabase::class.java
         ).build()
         deliveryDao = db.deliveryDao()
-        deliveryList=ArrayList<Delivery>()
+        deliveryList=ArrayList()
         deliveryItem = Delivery(
             1,
             "test Description",

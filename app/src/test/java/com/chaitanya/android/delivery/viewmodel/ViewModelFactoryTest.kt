@@ -16,7 +16,7 @@ class ViewModelFactoryTest {
     @Mock
     lateinit var deliveryRepository: IDeliveryRepository
 
-    lateinit var viewModelFactory: ViewModelFactory
+    private lateinit var viewModelFactory: ViewModelFactory
 
     @Before
     fun setUp() {

@@ -31,7 +31,7 @@ class DeliveryActivityUITest {
     private lateinit var mockServer: MockWebServer
 
 
-    var deliveryList = mutableListOf<Delivery>()
+    private var deliveryList = mutableListOf<Delivery>()
     lateinit var adapter :DeliveryListAdapter
 
 
@@ -40,7 +40,7 @@ class DeliveryActivityUITest {
     {
       for(i in 0..10)
       {
-          deliveryList.add(i, Delivery(i, "item$i","", Location(i.toDouble(),i.toDouble(),"item"+i)))
+          deliveryList.add(i, Delivery(i, "item$i","", Location(i.toDouble(),i.toDouble(), "item$i")))
       }
 
         adapter = DeliveryListAdapter()
@@ -94,8 +94,5 @@ class DeliveryActivityUITest {
         assert(activity.adapter.itemCount == 4)
 
     }
-
-
-
 
 }
